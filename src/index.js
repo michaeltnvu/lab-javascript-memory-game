@@ -45,6 +45,7 @@ window.addEventListener("load", (event) => {
   // Bind the click event of each element to a function
   document.querySelectorAll(".card").forEach((card) => {
     card.addEventListener("click", () => {
+      // TODO: write some code here
       if (memoryGame.pickedCards.length < 2) {
         card.classList.toggle("turned");
         memoryGame.pickedCards.push(card);
@@ -59,16 +60,11 @@ window.addEventListener("load", (event) => {
               memoryGame.pairsClicked;
             document.getElementById("pairs-guessed").innerText =
               memoryGame.pairsGuessed;
-            memoryGame.pickedCards[0].classList.toggle("blocked");
-            memoryGame.pickedCards[1].classList.toggle("blocked");
             memoryGame.pickedCards = [];
             if (memoryGame.checkIfFinished()) {
               setTimeout(() => {
-                alert(
-                  `Congratulations! You attempted ${memoryGame.pairsClicked} pairs to win. Click "OK" to reset game.`
-                );
-                window.location.reload();
-              }, 500);
+                alert("Congratulations!");
+              }, 1000);
             }
           } else {
             document.getElementById("pairs-clicked").innerText =

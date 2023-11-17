@@ -10,29 +10,25 @@ class MemoryGame {
   shuffleCards() {
     // ... write your code here
     if (!this.cards) return undefined;
-    let current = this.cards.length;
-    let random;
-    while (current > 0) {
-      random = Math.floor(Math.random() * current);
-      current--;
-      [this.cards[current], this.cards[random]] = [
-        this.cards[random],
-        this.cards[current],
-      ];
+    let currentIndex = this.cards.length;
+    let randomIndex;
+    while (currentIndex > 0) {
+      currentIndex--;
+      let temp = this.cards[currentIndex];
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      this.cards[currentIndex] = this.cards[randomIndex];
+      this.cards[randomIndex] = temp;
     }
     return this.cards;
   }
 
   checkIfPair(card1, card2) {
     // ... write your code here
+    this.pairsClicked++;
     if (card1 === card2) {
-      this.pairsClicked++;
       this.pairsGuessed++;
       return true;
-    } else {
-      this.pairsClicked++;
-      return false;
-    }
+    } else return false;
   }
 
   checkIfFinished() {
